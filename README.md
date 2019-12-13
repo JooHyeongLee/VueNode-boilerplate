@@ -24,3 +24,6 @@ npm start
 ```
 
 5. Open `http://localhost:8080` in browser
+
+# boilerplate를 참고하여 작성하는 프로젝트입니다.
+# SPA 사용법을 익히기 위해 작성하며, 기본적인 틀은 유지하되, 내부 코어모듈은 일부 바뀔 수 있습니다.
