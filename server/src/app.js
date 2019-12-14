@@ -1,19 +1,25 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const cors = require('cors')
-const morgan = require('morgan')
+// koa module declare 
+const Koa = require('koa')
+const Router = require('koa-router');
+const bodyParser = require('koa-bodyparser')
+const cors = require('@koa/cors')
+const logger = require('koa-logger')
 
-const app = express()
-app.use(morgan('combined'))
-app.use(bodyParser.json())
-app.use(cors())
+const app = new Koa()
+const router = new Router();
+
+// koa module middleware enroll
+app.use(bodyParser());
+app.use(cors());
+app.use(logger())
+
 
 const mongodb_conn_module = require('./mongodbConnModule');
 var db = mongodb_conn_module.connect();
 
 var Post = require("../models/post");
 
-app.get('/posts', (req, res) => {
+router.get('/posts', (req, res) => {
   Post.find({}, 'title description', function (error, posts) {
 	  if (error) { console.error(error); }
 	  res.send({
@@ -22,7 +28,7 @@ app.get('/posts', (req, res) => {
 	}).sort({_id:-1})
 })
 
-app.post('/add_post', (req, res) => {
+router.post('/add_post', (req, res) => {
 	var db = req.db;
 	var title = req.body.title;
 	var description = req.body.description;
@@ -41,7 +47,7 @@ app.post('/add_post', (req, res) => {
 	})
 })
 
-app.put('/posts/:id', (req, res) => {
+router.put('/posts/:id', (req, res) => {
 	console.log('put')
 	var db = req.db;
 	Post.findById(req.params.id, 'title description', function (error, post) {
@@ -60,7 +66,7 @@ app.put('/posts/:id', (req, res) => {
 	})
 })
 
-app.delete('/posts/:id', (req, res) => {
+router.delete('/posts/:id', (req, res) => {
 	console.log('delete')
 	var db = req.db;
 	Post.remove({
@@ -74,7 +80,7 @@ app.delete('/posts/:id', (req, res) => {
 	})
 })
 
-app.get('/post/:id', (req, res) => {
+router.get('/post/:id', (req, res) => {
 	console.log('get')
 	var db = req.db;
 	Post.findById(req.params.id, 'title description', function (error, post) {
@@ -83,7 +89,7 @@ app.get('/post/:id', (req, res) => {
 	})
 })
 
-app.get('/hello', (req, res)=>{
+router.get('/hello', (req, res)=>{
 	console.log('hello')
 	res.send({
 		success: true
