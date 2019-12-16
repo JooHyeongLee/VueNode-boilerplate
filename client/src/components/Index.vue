@@ -30,10 +30,6 @@ export default {
     }
   },
   mounted () {
-    let a = 'asdf'
-    var script = document.createElement('script')
-    script.src = `https://maps.google.com/maps/api/js?key=${a}`
-    document.body.appendChild(script)
   },
   components: {
     'main-component': mainComponent,

@@ -78,8 +78,31 @@
 </template>
 
 <script>
+import keys from '../../config/keys.js'
 export default {
-
+    name: 'support',
+    data () {
+        return {
+            map: {},
+			script: ''
+		}
+	},
+    mounted () {
+        this.script = document.createElement('script')
+        this.script.src = `https://maps.google.com/maps/api/js?key=${keys.GOOGLE_MAP}`
+        document.body.appendChild(this.script)
+        if(this.script) this.initMap()
+	},
+	methods: {
+		initMap () {
+          let map
+          map = new google.maps.Map(document.getElementById('gMap'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        })
+        console.log(map)
+		}
+	}
 }
 
 </script>
