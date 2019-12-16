@@ -3,9 +3,34 @@
   <head>
     <meta charset="utf-8">
     <title>client</title>
+	<link href="/static/stylesheets/animate.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="/static/stylesheets/bootstrap.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="/static/stylesheets/freeze.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="/static/stylesheets/slick.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="/static/javascripts/rs-plugin/css/settings.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="/static/stylesheets/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="/static/stylesheets/overwrite.css" media="all" rel="stylesheet" type="text/css" />
+
+	<script src="/static/javascripts/modernizr.custom.32033.js" type="text/javascript" ></script>
+	<script src="/static/javascripts/jquery-1.11.1.min.js"></script>
+	<script src="/static/javascripts/bootstrap.min.js"></script>
+	<script src="/static/javascripts/slick.min.js"></script>
+	<script src="/static/javascripts/placeholdem.min.js"></script>
+	<script src="/static/javascripts/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+	<script src="/static/javascripts/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+	<script src="/static/javascripts/waypoints.min.js"></script>
+	<script src="/static/javascripts/scripts.js"></script>
+	<script src="/static/common/common.js" type="text/javascript"></script>
+
   </head>
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+  <script>
+	 // function ready
+	$(document).ready(function() {
+		appMaster.preLoader()
+	}); 
+  </script>
 </html>
