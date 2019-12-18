@@ -10,6 +10,11 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12" style="padding: 0px;">
+					<GmapMap
+					  :center="{lat:37.4, lng:127.6}"
+					  :zoom="7"
+					style="min-height: 350px; border: 1px solid #c6C6C6;" class="mt30 mb30" ref="map">
+					</GmapMap>
 					<div id="gMap" style="min-height: 350px; border: 1px solid #C6C6C6;" class="mt30 mb30"></div>
 				</div>
 			</div>
@@ -78,30 +83,15 @@
 </template>
 
 <script>
-import keys from '../../config/keys.js'
 export default {
     name: 'support',
     data () {
         return {
-            map: {},
-			script: ''
 		}
 	},
     mounted () {
-        this.script = document.createElement('script')
-        this.script.src = `https://maps.google.com/maps/api/js?key=${keys.GOOGLE_MAP}`
-        document.body.appendChild(this.script)
-        if(this.script) this.initMap()
 	},
 	methods: {
-		initMap () {
-          let map
-          map = new google.maps.Map(document.getElementById('gMap'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        })
-        console.log(map)
-		}
 	}
 }
 

@@ -27,9 +27,13 @@ export default {
   name: 'index',
   data () {
     return {
+      script: '',
+      map: {}
     }
   },
   mounted () {
+  },
+  methods: {
   },
   components: {
     'main-component': mainComponent,
