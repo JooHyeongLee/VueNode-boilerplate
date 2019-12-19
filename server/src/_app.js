@@ -18,13 +18,15 @@ const mongodb_conn_module = require('./mongodbConnModule');
 var db = mongodb_conn_module.connect();
 var Post = require("../models/post");
 
-router.get('/posts', async(ctx, next) => {
-	try {
-		let result = await Post.find({}, 'title description')
-		ctx.body = result
-	} catch(error){
-		console.log(error);
-	}
+
+router.get('/posts', (req, res) => {
+	console.log('posts GET')
+  Post.find({}, 'title description', function (error, posts) {
+	  if (error) { console.error(error); }
+	  //	  res.send({
+	  //			posts: posts
+	  //		})
+	}).sort({_id:-1})
 })
 
 router.post('/add_post', async(ctx, next) => {
