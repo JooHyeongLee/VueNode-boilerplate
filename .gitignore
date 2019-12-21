@@ -3,3 +3,4 @@ client/node_modules
 client/config/keys.js
 server/.DS_Store
 server/dist/.DS_Store
+client/static/inspinia_v2.8

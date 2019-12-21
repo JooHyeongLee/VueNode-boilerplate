@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Posts from '@/components/Posts'
+import Main from '@/components/Main'
 import addpost from '@/components/AddPost'
 import editpost from '@/components/EditPost'
 import hello from '@/components/Hello'
@@ -35,6 +36,11 @@ export default new Router({
 		path: '/index',
 		component: index,
 		name: 'index'
+	},
+	{
+		path: '/main',
+		component: Main,
+		name: 'main'
 	}
   ]
 })
