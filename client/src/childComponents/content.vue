@@ -7,7 +7,7 @@
                         </div>
                         <div>
                             <div class="ibox-content no-padding border-left-right">
-                                <img alt="image" class="img-fluid" src="img/profile_big.jpg">
+                                <img alt="image" class="img-fluid" src="/static/img/profile_big.jpg">
                             </div>
                             <div class="ibox-content profile-content">
                                 <h4><strong>Monica Smith</strong></h4>
@@ -75,7 +75,7 @@
 
                                     <div class="feed-element">
                                         <a href="#" class="float-left">
-                                            <img alt="image" class="rounded-circle" src="img/a1.jpg">
+                                            <img alt="image" class="rounded-circle" src="/static/img/a1.jpg">
                                         </a>
                                         <div class="media-body ">
                                             <small class="float-right text-navy">1m ago</small>
@@ -90,7 +90,7 @@
 
                                     <div class="feed-element">
                                         <a href="#" class="float-left">
-                                            <img alt="image" class="rounded-circle" src="img/profile.jpg">
+                                            <img alt="image" class="rounded-circle" src="/static/img/profile.jpg">
                                         </a>
                                         <div class="media-body ">
                                             <small class="float-right">5m ago</small>
@@ -102,7 +102,7 @@
 
                                     <div class="feed-element">
                                         <a href="#" class="float-left">
-                                            <img alt="image" class="rounded-circle" src="img/a2.jpg">
+                                            <img alt="image" class="rounded-circle" src="/static/img/a2.jpg">
                                         </a>
                                         <div class="media-body ">
                                             <small class="float-right">2h ago</small>
@@ -121,21 +121,21 @@
                                     </div>
                                     <div class="feed-element">
                                         <a href="#" class="float-left">
-                                            <img alt="image" class="rounded-circle" src="img/a3.jpg">
+                                            <img alt="image" class="rounded-circle" src="/static/img/a3.jpg">
                                         </a>
                                         <div class="media-body ">
                                             <small class="float-right">2h ago</small>
                                             <strong>Janet Rosowski</strong> add 1 photo on <strong>Monica Smith</strong>. <br>
                                             <small class="text-muted">2 days ago at 8:30am</small>
                                             <div class="photos">
-                                                <a target="_blank" href="http://24.media.tumblr.com/20a9c501846f50c1271210639987000f/tumblr_n4vje69pJm1st5lhmo1_1280.jpg"> <img alt="image" class="feed-photo" src="img/p1.jpg"></a>
-                                                <a target="_blank" href="http://37.media.tumblr.com/9afe602b3e624aff6681b0b51f5a062b/tumblr_n4ef69szs71st5lhmo1_1280.jpg"> <img alt="image" class="feed-photo" src="img/p3.jpg"></a>
+                                                <a target="_blank" href="http://24.media.tumblr.com/20a9c501846f50c1271210639987000f/tumblr_n4vje69pJm1st5lhmo1_1280.jpg"> <img alt="image" class="feed-photo" src="/static/img/p1.jpg"></a>
+                                                <a target="_blank" href="http://37.media.tumblr.com/9afe602b3e624aff6681b0b51f5a062b/tumblr_n4ef69szs71st5lhmo1_1280.jpg"> <img alt="image" class="feed-photo" src="/static/img/p3.jpg"></a>
                                                 </div>
                                         </div>
                                     </div>
                                     <div class="feed-element">
                                         <a href="#" class="float-left">
-                                            <img alt="image" class="rounded-circle" src="img/a4.jpg">
+                                            <img alt="image" class="rounded-circle" src="/static/img/a4.jpg">
                                         </a>
                                         <div class="media-body ">
                                             <small class="float-right text-navy">5h ago</small>
@@ -149,7 +149,7 @@
                                     </div>
                                     <div class="feed-element">
                                         <a href="#" class="float-left">
-                                            <img alt="image" class="rounded-circle" src="img/a5.jpg">
+                                            <img alt="image" class="rounded-circle" src="/static/img/a5.jpg">
                                         </a>
                                         <div class="media-body ">
                                             <small class="float-right">2h ago</small>
@@ -166,7 +166,7 @@
                                     </div>
                                     <div class="feed-element">
                                         <a href="#" class="float-left">
-                                            <img alt="image" class="rounded-circle" src="img/profile.jpg">
+                                            <img alt="image" class="rounded-circle" src="/static/img/profile.jpg">
                                         </a>
                                         <div class="media-body ">
                                             <small class="float-right">23h ago</small>
@@ -176,7 +176,7 @@
                                     </div>
                                     <div class="feed-element">
                                         <a href="#" class="float-left">
-                                            <img alt="image" class="rounded-circle" src="img/a7.jpg">
+                                            <img alt="image" class="rounded-circle" src="/static/img/a7.jpg">
                                         </a>
                                         <div class="media-body ">
                                             <small class="float-right">46h ago</small>
