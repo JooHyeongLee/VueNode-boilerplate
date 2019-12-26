@@ -1,21 +1,23 @@
 <template>
 	<div id="wrapper">
 		<navigation></navigation>
-		<header-bar></header-bar>	
-		<div class="wrapper wrapper-content">
-			<main-content></main-content>	
+		<div id="page-wrapper" class="gray-bg">
+			<header-bar></header-bar>	
+			<footer-bar></footer-bar>
 		</div>
 	</div>
 </template>
 
 <script>
-import navigation from '../childComponents/navigation.vue'
-import header from '../childComponents/header.vue'
+import navigation from '../common/navigation.vue'
+import header from '../common/header.vue'
+import footer from '../common/footer.vue'
 import content from '../childComponents/content.vue'
 export default {
 	components: {
       'navigation': navigation,
       'header-bar': header,
+      'footer-bar': footer,
       'main-content': content
 	}
 }
