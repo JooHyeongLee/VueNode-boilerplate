@@ -11,7 +11,7 @@ const router = new Router();
 // koa module middleware enroll
 app.use(bodyParser());
 app.use(cors());
-app.use(logger())
+app.use(logger());
 
 
 const mongodb_conn_module = require('./mongodbConnModule');
@@ -89,13 +89,10 @@ router.get('/post/:id', (req, res) => {
 	})
 })
 
-router.get('/hello', (req, res)=>{
-	console.log(req)
-	res.send({
-		success: true
-	})
+router.get('/login', (ctx)=>{
+    console.log('login');
+    ctx.body = "login";
 })
-
 app.use(router.routes());
 app.use(router.allowedMethods());
 

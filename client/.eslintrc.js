@@ -32,7 +32,6 @@ module.exports = {
         'indent': [ 'error', 4 ],
         'brace-style': [ 'error', '1tbs' ],
         'semi': [ 'error', 'always' ],
-        'no-console': 'error',
         'comma-dangle': [ 'error', {
             'arrays': 'never',
             'objects': 'always-multiline',
@@ -40,6 +39,7 @@ module.exports = {
             'exports': 'never',
             'functions': 'never'
         }],
+        "no-console": OFF,
         'no-multiple-empty-lines': [ 'error', { 'max': 2, 'maxBOF': 1 }],
         'no-undef': 'error',
         'space-in-parens': ['error', 'never'],

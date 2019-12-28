@@ -111,7 +111,7 @@
 
 
                 <li>
-                    <a href="login.html">
+                    <a href="#" v-on:click="login()">
                         <i class="fa fa-sign-out"></i> Log in 
                     </a>
                 </li>
@@ -121,7 +121,16 @@
 </template>
 
 <script>
+import PostsService from '@/services/PostsService';
+import login from '@/services/LoginService';
+
 export default {
-    name: 'header'
+    name: 'header',
+    methods: {
+        async login () {
+            const response = await login.getLogin();
+            console.log(response);
+        },
+    },
 }
 </script>
