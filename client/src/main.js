@@ -4,9 +4,12 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import VueSweetalert2 from 'vue-sweetalert2';
+import vbclass from 'vue-body-class';
 
 Vue.use(VueSweetalert2);
 Vue.config.productionTip = false;
+Vue.use(vbclass, router);
+
 
 /* eslint-disable no-new */
 new Vue({

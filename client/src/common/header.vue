@@ -111,7 +111,7 @@
 
 
                 <li>
-                    <a href="#" v-on:click="login()">
+                    <a href="/login" >
                         <i class="fa fa-sign-out"></i> Log in 
                     </a>
                 </li>
