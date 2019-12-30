@@ -37,8 +37,11 @@ export default {
         }
     },
     mounted () {
+        this.init();
     },
     methods: {
+        async init () {
+        },
         async login () {
             const response = await LoginService.getLogin({
                 email: this.email,
@@ -53,7 +56,7 @@ export default {
             } catch(error) {
                 console.log(error);
             }
-        }
+        },
     },
     components: {
     },

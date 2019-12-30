@@ -7,35 +7,15 @@ const logger = require('koa-logger')
 
 const app = new Koa()
 const router = new Router();
+const routes = require('./routes');
 
 // koa module middleware enroll
 app.use(bodyParser());
 app.use(cors());
 app.use(logger());
+app.use(routes());
 
 const mongodb_conn_module = require('./mongodbConnModule');
-var db = mongodb_conn_module.connect();
-var Member = require("../models/member");
-
-router.post('/login', async (ctx)=>{
-    let email = ctx.request.body.email;
-    let password = ctx.request.body.password;
-
-    try {
-        let info = await Member.find({
-            "email": {"$eq": email},
-            "password": {"$eq": password}
-        });
-        if(info.length) {
-            ctx.body = "success";
-        } else {
-            ctx.body = "fail";
-        }
-    } catch(error) {
-        console.log(error);
-    }
-})
-app.use(router.routes());
-app.use(router.allowedMethods());
+global.db = mongodb_conn_module.connect();
 
 app.listen(process.env.PORT || 8081)

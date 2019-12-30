@@ -126,10 +126,10 @@ import login from '@/services/LoginService';
 
 export default {
     name: 'header',
+    mounted () {
+    },
     methods: {
         async login () {
-            const response = await login.getLogin();
-            console.log(response);
         },
     },
 }

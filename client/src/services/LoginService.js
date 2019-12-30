@@ -4,4 +4,7 @@ export default {
     getLogin (params) {
         return Api().post('login', params);
     },
+    getInit () {
+        return Api().get();
+    },
 };
