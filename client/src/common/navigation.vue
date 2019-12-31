@@ -12,7 +12,7 @@
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a class="dropdown-item" href="profile.html">Profile</a></li>
                             <li><a class="dropdown-item" href="contacts.html">Contacts</a></li>
-                            <li><a class="dropdown-item" href="mailbox.html">Mailbox</a></li>
+                            <li><a class="dropdown-item" href="/mailbox">Mailbox</a></li>
                             <li class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="/login">Login</a></li>
                         </ul>
@@ -48,7 +48,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning float-right">16/24</span></a>
+                    <a href="#"><i class="fa fa-envelope" ></i> <span class="nav-label">Mailbox </span><span class="label label-warning float-right">16/24</span></a>
                     <ul class="nav nav-second-level collapse">
                         <li><a href="mailbox.html">Inbox</a></li>
                         <li><a href="mail_detail.html">Email view</a></li>
@@ -250,6 +250,9 @@ export default {
     mounted () {
     },
     methods: {
+        test () {
+            alert('mail');
+        }
     },
 }
 </script>
