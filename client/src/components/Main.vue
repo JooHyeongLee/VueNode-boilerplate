@@ -3,22 +3,29 @@
 		<navigation v-if="this.profile" v-bind:profile-url="this.profile"></navigation>
 		<div id="page-wrapper" class="gray-bg">
 			<header-bar></header-bar>	
+            <!-- sub Component 위치 -->
+            <mail-box></mail-box>
+            <!-- -->
 			<footer-bar></footer-bar>
 		</div>
 	</div>
 </template>
 
 <script>
-import navigation from '../common/navigation.vue'
-import header from '../common/header.vue'
-import footer from '../common/footer.vue'
-import content from '../childComponents/content.vue'
+// 공통 컴포넌트
+import navigation from '../common/navigation.vue';
+import header from '../common/header.vue';
+import footer from '../common/footer.vue';
+// 서브 컴포넌트
+import mailBox from '../childComponents/mailbox.vue';
+// service
 import LoginService from '../services/LoginService.js';
 export default {
     name: 'name',
     data () {
         return {
-            profile: ''
+            profile: '',
+            contentsComponent: '',
         }
     },
     mounted () {
@@ -40,7 +47,7 @@ export default {
         'navigation': navigation,
         'header-bar': header,
         'footer-bar': footer,
-        'main-content': content
+        'mail-box': mailBox,
     }
 }
 

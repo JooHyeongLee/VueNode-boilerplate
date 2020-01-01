@@ -21,8 +21,8 @@
                         IN+
                     </div>
                 </li>
-                <li>
-                    <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+                <li id="dashboard" v-on:click="setActive">
+                    <a href="javascript:void(0)"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li><a href="index.html">Dashboard v.1</a></li>
                         <li><a href="dashboard_2.html">Dashboard v.2</a></li>
@@ -47,7 +47,7 @@
                         <li><a href="graph_sparkline.html">Sparkline Charts</a></li>
                     </ul>
                 </li>
-                <li>
+                <li id="mailbox" v-on:click="setActive">
                     <a href="#"><i class="fa fa-envelope" ></i> <span class="nav-label">Mailbox </span><span class="label label-warning float-right">16/24</span></a>
                     <ul class="nav nav-second-level collapse">
                         <li><a href="mailbox.html">Inbox</a></li>
@@ -250,8 +250,8 @@ export default {
     mounted () {
     },
     methods: {
-        test () {
-            alert('mail');
+        setActive (id) {
+            this.$store.commit('setActive', id.path[1].id);
         }
     },
 }

@@ -5,6 +5,7 @@ import App from './App';
 import router from './router';
 import VueSweetalert2 from 'vue-sweetalert2';
 import vbclass from 'vue-body-class';
+import {store} from './store.js';
 
 Vue.use(VueSweetalert2);
 Vue.config.productionTip = false;
@@ -16,5 +17,6 @@ new Vue({
     el: '#app',
     router,
     template: '<App/>',
+    store,
     components: { App },
 });
