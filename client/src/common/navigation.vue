@@ -21,41 +21,17 @@
                         IN+
                     </div>
                 </li>
-                <li id="dashboard" v-on:click="setActive">
-                    <a href="javascript:void(0)"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li><a href="index.html">Dashboard v.1</a></li>
-                        <li><a href="dashboard_2.html">Dashboard v.2</a></li>
-                        <li><a href="dashboard_3.html">Dashboard v.3</a></li>
-                        <li><a href="dashboard_4_1.html">Dashboard v.4</a></li>
-                        <li><a href="dashboard_5.html">Dashboard v.5 </a></li>
+                <!-- menu 반복문으로 작성 -->
+                <li v-for="(menu, idx) in menus" :key="menu.title">
+                    <a href="#"><i v-bind:class="menu.icon"></i> <span class="nav-label">{{ menu.title }}</span> <span class="fa arrow"></span></a>
+                    <ul v-bind:class="menu.ulClass">
+                        <li v-for="(subMenu, subIdx) in menu.subMenu" :key="subMenu" @click="setActive(subMenu, subIdx)">
+                            <a href="#">{{ subMenu}}</a>
+                        </li> 
                     </ul>
                 </li>
-                <li>
-                    <a href="layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li><a href="graph_flot.html">Flot Charts</a></li>
-                        <li><a href="graph_morris.html">Morris.js Charts</a></li>
-                        <li><a href="graph_rickshaw.html">Rickshaw Charts</a></li>
-                        <li><a href="graph_chartjs.html">Chart.js</a></li>
-                        <li><a href="graph_chartist.html">Chartist</a></li>
-                        <li><a href="c3.html">c3 charts</a></li>
-                        <li><a href="graph_peity.html">Peity Charts</a></li>
-                        <li><a href="graph_sparkline.html">Sparkline Charts</a></li>
-                    </ul>
-                </li>
-                <li id="mailbox" v-on:click="setActive">
-                    <a href="#"><i class="fa fa-envelope" ></i> <span class="nav-label">Mailbox </span><span class="label label-warning float-right">16/24</span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li><a href="mailbox.html">Inbox</a></li>
-                        <li><a href="mail_detail.html">Email view</a></li>
-                        <li><a href="mail_compose.html">Compose email</a></li>
-                        <li><a href="email_template.html">Email templates</a></li>
-                    </ul>
-                </li>
+                <!-- -->
+
                 <li>
                     <a href="metrics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">Metrics</span>  </a>
                 </li>
@@ -245,13 +221,33 @@ export default {
     name: 'navigation',
     data () {
         return {
+            menus: [
+                {
+                    title: 'dashboard',
+                    ulClass: 'nav nav-second-level collapse',
+                    icon: 'fa fa-th-large',
+                    subMenu: ['Dashboard v.1', 'Dashboard v.2', 'Dashboard_v.3']
+                },
+                {
+                    title: 'mailbox',
+                    ulClass: 'nav nav-second-level collapse',
+                    icon: 'fa fa-envelope',
+                    subMenu: ['Inbox', 'Email view', 'Compose email', 'Email templates'],
+                },
+                {
+                    title: 'graphs',
+                    ulClass: 'nav nav-second-level collapse',
+                    icon: 'fa fa-bar-chart-o',
+                    subMenu: ['Flot Charts', 'Morris.js Charts', 'Richshaw Charts', 'Chart.js', 'Chartist', 'c3 charts', 'Peity Charts', 'Sparkline Charts']
+                }
+            ]
         }
     },
     mounted () {
     },
     methods: {
-        setActive (id) {
-            this.$store.commit('setActive', id.path[1].id);
+        setActive (menu, idx) {
+            this.$store.commit('setActive', menu);
         }
     },
 }

@@ -4,7 +4,7 @@
 		<div id="page-wrapper" class="gray-bg">
 			<header-bar></header-bar>	
             <!-- sub Component 위치 -->
-            <mail-box></mail-box>
+            <component v-bind:is="$store.state.active"></component>
             <!-- -->
 			<footer-bar></footer-bar>
 		</div>
@@ -18,6 +18,7 @@ import header from '../common/header.vue';
 import footer from '../common/footer.vue';
 // 서브 컴포넌트
 import mailBox from '../childComponents/mailbox.vue';
+import dashboard from '../childComponents/content.vue';
 // service
 import LoginService from '../services/LoginService.js';
 export default {
@@ -47,7 +48,8 @@ export default {
         'navigation': navigation,
         'header-bar': header,
         'footer-bar': footer,
-        'mail-box': mailBox,
+        'Inbox': mailBox,
+        'dashboard': dashboard
     }
 }
 
