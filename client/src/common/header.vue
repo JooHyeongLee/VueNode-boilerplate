@@ -125,7 +125,7 @@ import PostsService from '@/services/PostsService';
 import login from '@/services/LoginService';
 
 export default {
-    name: 'header',
+    name: 'header-bar',
     mounted () {
     },
     methods: {

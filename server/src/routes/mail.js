@@ -5,9 +5,9 @@ var Imap = require('imap'),
     inspect = require('util').inspect;
 
 var imap = new Imap({
-  user: 'jhlee@cufit.net',
-  password: 'jhl13053416',
-  host: 'imap.gmail.com',
+  user: 'godparty@naver.com',
+  password: 'nvjhl1305',
+  host: 'imap.naver.com',
   port: 993,
   tls: true
 });
@@ -19,8 +19,11 @@ function openInbox(cb) {
 
 router.get('/mail', async ctx =>{
     imap.once('ready', function() {
-        openInbox(function(err, box) {
+        openInbox(async function(err, box) {
             if (err) throw err;
+
+            //            let test = await imap.sort(['ALL'], ['REVERSE'] );
+            //            console.log(test);
 
             var f = imap.seq.fetch('1:3', {
                 bodies: 'HEADER.FIELDS (FROM TO SUBJECT DATE)',

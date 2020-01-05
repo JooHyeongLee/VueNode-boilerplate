@@ -7,4 +7,7 @@ export default {
     getInit () {
         return Api().get();
     },
+    postRegister (params) {
+        return Api().post('register', params);
+    },
 };

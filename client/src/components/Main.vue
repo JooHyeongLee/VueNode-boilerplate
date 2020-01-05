@@ -22,7 +22,7 @@ import dashboard from '../childComponents/content.vue';
 // service
 import LoginService from '../services/LoginService.js';
 export default {
-    name: 'name',
+    name: 'main-page',
     data () {
         return {
             profile: '',
