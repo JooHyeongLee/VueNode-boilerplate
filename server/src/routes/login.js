@@ -3,6 +3,7 @@ const router = new Router();
 const Member = require("../models/member");
 
 router.post('/login', async ctx => {
+    logger.info('[route] : post login')
     let email = ctx.request.body.email;
     let password = ctx.request.body.password;
 

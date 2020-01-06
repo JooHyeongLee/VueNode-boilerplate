@@ -8,6 +8,12 @@ if (!process.env.NODE_ENV) {
 var opn = require('opn')
 var path = require('path')
 var express = require('express')
+var spdy = require('spdy'),
+    fs = require('fs');
+var opts = {
+    key: fs.readFileSync(__dirname + '/../certificate/server.key'),
+    cert: fs.readFileSync(__dirname + '/../certificate/server.crt'),
+}
 var webpack = require('webpack')
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = (process.env.NODE_ENV === 'testing' || process.env.NODE_ENV === 'production')
@@ -84,6 +90,14 @@ devMiddleware.waitUntilValid(() => {
 })
 
 var server = app.listen(port)
+
+//var server = 
+//    spdy
+//    .createServer(opts, app)
+//    .listen(port, ()=>{
+//        console.log('http2 !!');
+//    })
+
 
 module.exports = {
   ready: readyPromise,
