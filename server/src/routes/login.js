@@ -18,7 +18,7 @@ router.post('/login', async ctx => {
             ctx.body = "fail";
         }
     } catch(error) {
-        console.log(error);
+        logger.error(error);
     }
 });
 
@@ -46,7 +46,7 @@ router.post('/register', async ctx => {
         }
 
     } catch(error)  {
-        console.log(error);
+        logger.error(error);
     }
 })
 
@@ -61,7 +61,7 @@ router.get('/', async ctx => {
             ctx.body = "fail";
         }
     } catch(error) {
-        console.log(error);
+        logger.error(error);
     }
 })
 
