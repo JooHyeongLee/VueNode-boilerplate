@@ -17,6 +17,9 @@ app.use(bodyParser());
 app.use(cors());
 app.use(routes());
 
+// mqtt
+
+
 global.db;
 (async function initMongo() {
     db = await mongodb_conn_module.connect();
