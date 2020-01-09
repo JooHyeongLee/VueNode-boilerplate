@@ -36,8 +36,10 @@ export default {
         async init () {
             const response = await LoginService.getInit();
             try {
-                if(response.data.length) {
-                    this.profile = response.data[0].profile_url;
+                if(response.data.result && response.data.info.profile_url) {
+                    this.profile = response.data.info.profile_url;
+                } else {
+                    this.profile = "/static/img/profile_small.jpg";
                 }
             } catch(error) {
                 console.log(error);

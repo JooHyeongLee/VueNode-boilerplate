@@ -2,7 +2,7 @@ server/node_modules
 server/logs/
 server/.DS_Store
 server/dist/.DS_Store
-
+.DS_Store
 client/node_modules
 client/config/keys.js
 client/static/inspinia_v2.8

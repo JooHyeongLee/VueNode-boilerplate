@@ -1,11 +1,25 @@
 const Router = require('koa-router');
 const router = new Router();
 const Member = require("../models/member");
+const client = require('../client.js');
 
 router.post('/login', async ctx => {
     logger.info('[route] : post login')
     let email = ctx.request.body.email;
     let password = ctx.request.body.password;
+ 
+    //    client.on('connect', function () {
+    //      client.subscribe('presence', function (err) {
+    //        if (!err) {
+    //          client.publish('presence', 'Hello mqtt')
+    //        }
+    //      })
+    //    })
+    //    client.on('message', function (topic, message) {
+    //      // message is Buffer
+    //      console.log(message.toString())
+    //      client.end()
+    //    })
 
     try {
         let info = await Member.find({
@@ -51,14 +65,23 @@ router.post('/register', async ctx => {
 })
 
 router.get('/', async ctx => {
+    logger.info('[route]: home');
+
     try {
         let info = await Member.find({
             'email': {"$eq": "admin@admin"}
         });
+        console.log(ctx.session);
         if(info.length) {
-            ctx.body = info;
+            ctx.body = {
+                info: info[0],
+                result: true 
+            }
+            ctx.session.info = info;
         } else {
-            ctx.body = "fail";
+            ctx.body = {
+                result: false 
+            } 
         }
     } catch(error) {
         logger.error(error);
