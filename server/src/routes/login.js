@@ -22,11 +22,11 @@ router.post('/login', async ctx => {
     //    })
 
     try {
-        let info = await Member.find({
+        let info = await Member.findOne({
             "email": {"$eq": email},
             "password": {"$eq": password}
         });
-        if(info.length) {
+        if(info) {
             ctx.body = "success";
         } else {
             ctx.body = "fail";
@@ -68,16 +68,14 @@ router.get('/', async ctx => {
     logger.info('[route]: home');
 
     try {
-        let info = await Member.find({
+        let info = await Member.findOne({
             'email': {"$eq": "admin@admin"}
         });
-        console.log(ctx.session);
-        if(info.length) {
+        if(info) {
             ctx.body = {
-                info: info[0],
-                result: true 
+                info: info,
+                result: true ,
             }
-            ctx.session.info = info;
         } else {
             ctx.body = {
                 result: false 

@@ -1,30 +1,33 @@
 // koa module declare 
 const Koa = require('koa');
-const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
 const cors = require('@koa/cors');
-const session = require('koa-session');
-var mongoose = require('mongoose');
+// const session = require('koa-session');
 const MongooseStore = require("koa-session-mongoose");
+var session = require('koa-generic-session');
+var redisStore = require('koa-redis');
 const mongodb_conn_module = require('./mongodbConnModule');
 
 const app = new Koa();
-const router = new Router();
 const routes = require('./routes');
 
-const CONFIG = {
-  key: 'koa:sess', /** (string) cookie key (default is koa:sess) */
-  /** (number || 'session') maxAge in ms (default is 1 days) */
-  /** 'session' will result in a cookie that expires when session/browser is closed */
-  /** Warning: If a session cookie is stolen, this cookie will never expire */
-  maxAge: 86400000,
-  autoCommit: true, /** (boolean) automatically commit headers (default true) */
-  overwrite: true, /** (boolean) can overwrite or not (default true) */
-  httpOnly: true, /** (boolean) httpOnly or not (default true) */
-  signed: true, /** (boolean) signed or not (default true) */
-  rolling: false, /** (boolean) Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown. (default is false) */
-  renew: false, /** (boolean) renew session when session is nearly expired, so we can always keep user logged in. (default is false)*/
-};
+// koa-session
+app.keys = ['keys', 'keykeys'];
+app.use(session({
+  store: redisStore()
+}));
+
+/* app.use(()=>{
+  switch (this.path) {
+    case '/get':
+      get.call(this);
+      break;
+    case '/remove':
+      remove.call(this);
+      break;
+    }
+}); */
+
 
 global.db = mongodb_conn_module.connect();
 
@@ -32,13 +35,6 @@ global.db = mongodb_conn_module.connect();
 app.use(bodyParser());
 app.use(cors());
 app.use(routes());
-app.use(session(CONFIG, app));
-app.use(ctx => {
-  // ignore favicon
-  let n = ctx.session.views || 0;
-  ctx.session.views = ++n;
-  ctx.body = n + ' views';
-});
 
 global.logger = require('./utils/logger.js');
 
