@@ -3,31 +3,30 @@ const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
 const cors = require('@koa/cors');
 // const session = require('koa-session');
-const MongooseStore = require("koa-session-mongoose");
-var session = require('koa-generic-session');
+var session = require('./utils/session');
 var redisStore = require('koa-redis');
 const mongodb_conn_module = require('./mongodbConnModule');
 
 const app = new Koa();
 const routes = require('./routes');
 
+
 // koa-session
 app.keys = ['keys', 'keykeys'];
 app.use(session({
-  store: redisStore()
+  store: new redisStore()
 }));
 
-/* app.use(()=>{
-  switch (this.path) {
-    case '/get':
-      get.call(this);
-      break;
-    case '/remove':
-      remove.call(this);
-      break;
-    }
-}); */
+function post(ctx) {
+    var session = ctx.session;
+    session.count = session.count || 0;
+    session.count++;
+    session.isLogin = true;
+}
 
+function remove() {
+  this.session = null;
+}
 
 global.db = mongodb_conn_module.connect();
 
@@ -40,18 +39,6 @@ global.logger = require('./utils/logger.js');
 
 // mqtt
 //const mqtt = require('./mosca.js');
-
-//(async function initMongo() {
-//    db = await mongodb_conn_module.connect();
-//    app.use(session({
-//        store: new MongooseStore({
-//          collection: 'appSessions',
-//          connection: db,
-//          expires: 86400, // 1 day is the default
-//          name: 'AppSession'
-//        })
-//      }, app));
-//})();
 
 app.listen(process.env.PORT || 8081)
 

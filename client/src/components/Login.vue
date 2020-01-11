@@ -81,6 +81,7 @@ export default {
                 password: this.password,
             });
             try {
+                console.log(response)
                 if(response.data === 'success') {
                     window.location = '/';
                 } else {
