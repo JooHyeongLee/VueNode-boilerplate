@@ -428,7 +428,6 @@ module.exports = function(options = {}) {
       // make sure that the session has been loaded
       await ctx.session
       
-      const result = await getSession(ctx)
       if (!result) {
         return next()
       }

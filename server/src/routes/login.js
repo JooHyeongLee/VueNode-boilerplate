@@ -27,6 +27,7 @@ router.post('/login', async ctx => {
             "password": {"$eq": password}
         });
         if(info) {
+            ctx.session.info = info;
             ctx.body = "success";
         } else {
             ctx.body = "fail";
@@ -66,23 +67,28 @@ router.post('/register', async ctx => {
 
 router.get('/', async ctx => {
     logger.info('[route]: home');
-
-    try {
-        let info = await Member.findOne({
-            'email': {"$eq": "admin@admin"}
-        });
-        if(info) {
-            ctx.body = {
-                info: info,
-                result: true ,
+    var session = ctx.session;
+    console.log(ctx.key)
+    if(ctx.session.info) {
+        try {
+            let info = await Member.findOne({
+                'email': {"$eq": "admin@admin"}
+            });
+            if(info) {
+                ctx.body = {
+                    info: info,
+                    result: true ,
+                }
+          } else {
+               ctx.body = {
+                    result: false 
+                } 
             }
-        } else {
-            ctx.body = {
-                result: false 
-            } 
+        } catch(error) {
+            logger.error(error);
         }
-    } catch(error) {
-        logger.error(error);
+    } else {
+        ctx.body = session 
     }
 })
 

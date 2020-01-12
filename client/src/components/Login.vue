@@ -83,7 +83,7 @@ export default {
             try {
                 console.log(response)
                 if(response.data === 'success') {
-                    window.location = '/';
+                    this.$router.push('/');
                 } else {
                     alert('로그인 실패');
                 }
