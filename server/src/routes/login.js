@@ -68,7 +68,7 @@ router.post('/register', async ctx => {
 router.get('/', async ctx => {
     logger.info('[route]: home');
     var session = ctx.session;
-    console.log(ctx.key)
+
     if(ctx.session.info) {
         try {
             let info = await Member.findOne({
