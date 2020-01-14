@@ -12,22 +12,17 @@ const app = new Koa();
 const routes = require('./routes');
 
 const RateLimit = require('koa2-ratelimit').RateLimit;
- 
+const Stores = require('koa2-ratelimit').Stores;
+
 RateLimit.defaultOptions({
     message: 'Get out.',
-    // ...
+    store: new Stores.Redis({
+        host: '127.0.0.1',
+        port: '6379',
+        password: 'jhl1305',
+        db: 1
+    })
 });
- 
-const getUserLimiter = RateLimit.middleware({
-  max: 10,
-  // message: 'Get out.', will be added
-});
-
-const createAccountLimiter = RateLimit.middleware({
-  max: 5, // start blocking after 5 requests
-  // message: 'Get out.', will be added
-});
-
 
 // koa-session
 app.keys = ['keys', 'keykeys'];

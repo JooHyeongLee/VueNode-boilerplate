@@ -3,6 +3,12 @@ const router = new Router();
 const Member = require("../models/member");
 const client = require('../client.js');
 
+const RateLimit = require('koa2-ratelimit').RateLimit;
+const limitMiddleware = RateLimit.middleware({
+    interval: 15*60*1000, // 15 minutes
+    max: 100,
+});
+
 router.post('/login', async ctx => {
     logger.info('[route] : post login')
     let email = ctx.request.body.email;
@@ -65,7 +71,7 @@ router.post('/register', async ctx => {
     }
 })
 
-router.get('/', async ctx => {
+router.get('/', limitMiddleware, async ctx => {
     logger.info('[route]: home');
     var session = ctx.session;
 
