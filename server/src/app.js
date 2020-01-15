@@ -7,9 +7,12 @@ var session = require('./utils/session');
 var RedisStore = require('koa-redis');
 var memoryStroe = require('./utils/memory_store.js');
 const mongodb_conn_module = require('./mongodbConnModule');
+var redis = require('redis'),
+    client = redis.createClient();
 
 const app = new Koa();
-const routes = require('./routes');
+const api = require('./api');
+//const routes = require('./routes');
 
 const RateLimit = require('koa2-ratelimit').RateLimit;
 const Stores = require('koa2-ratelimit').Stores;
@@ -30,11 +33,14 @@ app.use(session({
   store: new RedisStore()
 }));
 
+var redis = require('redis'),
+    client = redis.createClient();
 // koa module middleware enroll
-app.use(bodyParser());
 app.use(cors());
-app.use(routes());
+app.use(bodyParser());
+app.use(api.routes());
 
+// global 변수
 global.logger = require('./utils/logger.js');
 global.db = mongodb_conn_module.connect();
 

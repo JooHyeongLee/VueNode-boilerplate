@@ -9,6 +9,32 @@ const limitMiddleware = RateLimit.middleware({
     max: 100,
 });
 
+router.get('/', limitMiddleware, async ctx => {
+    logger.info('[route]: home');
+
+    if(ctx.session.info) {
+        try {
+            let info = await Member.findOne({
+                'email': {"$eq": "admin@admin"}
+            });
+            if(info) {
+                ctx.body = {
+                    info: info,
+                    result: true ,
+                }
+          } else {
+               ctx.body = {
+                    result: false 
+                } 
+            }
+        } catch(error) {
+            logger.error(error);
+        }
+    } else {
+        ctx.body = "????";
+    }
+})
+
 router.post('/login', async ctx => {
     logger.info('[route] : post login')
     let email = ctx.request.body.email;
@@ -70,34 +96,6 @@ router.post('/register', async ctx => {
         logger.error(error);
     }
 })
-
-router.get('/', limitMiddleware, async ctx => {
-    logger.info('[route]: home');
-    var session = ctx.session;
-
-    if(ctx.session.info) {
-        try {
-            let info = await Member.findOne({
-                'email': {"$eq": "admin@admin"}
-            });
-            if(info) {
-                ctx.body = {
-                    info: info,
-                    result: true ,
-                }
-          } else {
-               ctx.body = {
-                    result: false 
-                } 
-            }
-        } catch(error) {
-            logger.error(error);
-        }
-    } else {
-        ctx.body = session 
-    }
-})
-
 
 module.exports = router;
 

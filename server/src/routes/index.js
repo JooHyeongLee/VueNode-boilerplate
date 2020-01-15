@@ -1,12 +1,11 @@
-const Router = require('koa-router')
-const combineRouters = require('koa-combine-routers')
- 
-const login = require('./login.js'); 
+const Router = require('koa-router');
+
+const login = require('./login.js');
 const mail = require('./mail.js');
 
-const router = combineRouters(
-    login,
-    mail
-)
+const router = new Router();
+
+router.use('/', login.routes());
 
 module.exports = router;
+

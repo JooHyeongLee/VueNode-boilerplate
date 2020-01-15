@@ -86,7 +86,6 @@ module.exports = function(options = {}) {
   }
 
   const sessionIdStore = options.sessionIdStore || {
-
     get: function() {
       return this.cookies.get(key, cookie)
     },
