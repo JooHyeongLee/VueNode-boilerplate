@@ -257,6 +257,7 @@
 import header from '../common/header.vue';
 import navigation from '../common/navigation.vue';
 import footer from '../common/footer.vue';
+import MailService from '../services/MailService.js';
 export default {
     name: 'mailbox',
     data () {
@@ -264,6 +265,7 @@ export default {
         }
     },
     mounted () {
+        MailService.getMail();
     },
     methods: {
     },

@@ -11,6 +11,7 @@ const limitMiddleware = RateLimit.middleware({
 
 router.get('/', limitMiddleware, async ctx => {
     logger.info('[route]: home');
+    console.log(ctx.session);
 
     if(ctx.session.info) {
         try {
@@ -31,14 +32,17 @@ router.get('/', limitMiddleware, async ctx => {
             logger.error(error);
         }
     } else {
-        ctx.body = "????";
+        ctx.body = {
+            result: false
+        }
     }
 })
 
 router.post('/login', async ctx => {
-    logger.info('[route] : post login')
+    logger.info('[route] : post login');
     let email = ctx.request.body.email;
     let password = ctx.request.body.password;
+    console.log(ctx.request.body);
  
     //    client.on('connect', function () {
     //      client.subscribe('presence', function (err) {

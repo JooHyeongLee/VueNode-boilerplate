@@ -1,16 +1,19 @@
 const Router = require('koa-router');
 const router = new Router();
 const MailParser = require('mailparser').MailParser;
+var imap;
 var Imap = require('imap'),
     inspect = require('util').inspect;
 
-var imap = new Imap({
-  user: 'godparty@naver.com',
-  password: 'nvjhl1305',
-  host: 'imap.naver.com',
-  port: 993,
-  tls: true
-});
+async function init() {
+    imap = new Imap({
+        user: config.imap.user,
+        password: config.imap.password,
+        host: config.imap.host,
+        port: config.imap.port,
+        tls: config.imap.tls
+    });
+}
 
 function openInbox(cb) {
     imap.openBox('INBOX', true, cb);
@@ -18,6 +21,7 @@ function openInbox(cb) {
 
 
 router.get('/mail', async ctx =>{
+    init();
     imap.once('ready', function() {
         openInbox(async function(err, box) {
             if (err) throw err;

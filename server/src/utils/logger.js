@@ -30,7 +30,7 @@ const options = {
     json: false, // 로그형태를 json으로도 뽑을 수 있다.
     colorize: true,
     format: combine(
-      label({ label: 'nba_express' }),
+      label({ label: 'koa' }),
       timestamp(),
       myFormat
     )

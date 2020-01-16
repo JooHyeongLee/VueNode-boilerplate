@@ -9,3 +9,5 @@ client/config/keys.js
 client/static/inspinia_v2.8
 client/static
 logs/
+dump.rdb
+config
