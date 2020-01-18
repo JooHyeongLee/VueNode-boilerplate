@@ -12,6 +12,9 @@ const routes = require('./routes');
 const RateLimit = require('koa2-ratelimit').RateLimit;
 const Stores = require('koa2-ratelimit').Stores;
 
+//mqtt
+const mqtt = require('./mqtt/handler');
+
 // global 변수
 global.logger = require('./utils/logger.js');
 global.config = require(__dirname + "/../../config/config.json");
@@ -44,24 +47,8 @@ app.use(koaBody({
     multipart: true,
     urlencoded: true
 }));
-app.use(routes())
+app.use(routes());
 
 app.listen(process.env.PORT || 8081, ()=>{
     logger.info(8081 + " port listen!");
 });
-
-// mqtt
-//const mqtt = require('./mosca.js');
-
-
-//mqtt.on('clientConnected', client=>{
-//    console.log('client connected', client.id);
-//});
-//
-//mqtt.on('published', (packet, client) =>{
-//  console.log('Published', packet.payload);
-//});
-//
-//mqtt.on('ready', ()=>{
-//  console.log('Mosca server is up and running');
-//});

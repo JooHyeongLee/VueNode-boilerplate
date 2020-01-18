@@ -42,7 +42,7 @@ router.post('/login', async ctx => {
     logger.info('[route] : post login');
     let email = ctx.request.body.email;
     let password = ctx.request.body.password;
-    console.log(ctx.request.body);
+    console.log(ctx.request.body)
  
     //    client.on('connect', function () {
     //      client.subscribe('presence', function (err) {

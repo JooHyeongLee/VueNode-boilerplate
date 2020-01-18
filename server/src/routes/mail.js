@@ -15,6 +15,7 @@ async function init() {
     });
 }
 
+
 function openInbox(cb) {
     imap.openBox('INBOX', true, cb);
 }
