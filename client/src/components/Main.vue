@@ -19,6 +19,7 @@ import footer from '../common/footer.vue';
 // 서브 컴포넌트
 import mailBox from '../childComponents/mailbox.vue';
 import dashboard from '../childComponents/content.vue';
+import chat from '../childComponents/chat.vue';
 // service
 import LoginService from '../services/LoginService.js';
 export default {
@@ -49,7 +50,8 @@ export default {
         'header-bar': header,
         'footer-bar': footer,
         'Inbox': mailBox,
-        'dashboard': dashboard
+        'dashboard': dashboard,
+        'chat': chat
     }
 }
 

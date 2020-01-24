@@ -23,10 +23,10 @@
                 </li>
                 <!-- menu 반복문으로 작성 -->
                 <li v-for="(menu, idx) in menus" :key="menu.title">
-                    <a href="#"><i v-bind:class="menu.icon"></i> <span class="nav-label">{{ menu.title }}</span> <span class="fa arrow"></span></a>
+                    <a href="#"><i v-bind:class="menu.icon"></i> <span class="nav-label" @click="singleSetActive(menu, idx)">{{ menu.title }}</span> <span :class="menu.arrow"></span></a>
                     <ul v-bind:class="menu.ulClass">
                         <li v-for="(subMenu, subIdx) in menu.subMenu" :key="subMenu" @click="setActive(subMenu, subIdx)">
-                            <a href="#">{{ subMenu}}</a>
+                            <a href="#">{{ subMenu }}</a>
                         </li> 
                     </ul>
                 </li>
@@ -223,22 +223,23 @@ export default {
         return {
             menus: [
                 {
-                    title: 'dashboard',
+                    title: 'chat',
                     ulClass: 'nav nav-second-level collapse',
-                    icon: 'fa fa-th-large',
-                    subMenu: ['Dashboard v.1', 'Dashboard v.2', 'Dashboard_v.3']
+                    icon: 'fa fa-users',
                 },
                 {
                     title: 'mailbox',
                     ulClass: 'nav nav-second-level collapse',
                     icon: 'fa fa-envelope',
                     subMenu: ['Inbox', 'Email view', 'Compose email', 'Email templates'],
+                    arrow: 'fa arrow'
                 },
                 {
                     title: 'graphs',
                     ulClass: 'nav nav-second-level collapse',
                     icon: 'fa fa-bar-chart-o',
-                    subMenu: ['Flot Charts', 'Morris.js Charts', 'Richshaw Charts', 'Chart.js', 'Chartist', 'c3 charts', 'Peity Charts', 'Sparkline Charts']
+                    subMenu: ['Flot Charts', 'Morris.js Charts', 'Richshaw Charts', 'Chart.js', 'Chartist', 'c3 charts', 'Peity Charts', 'Sparkline Charts'],
+                    arrow: 'fa arrow'
                 }
             ]
         }
@@ -248,6 +249,11 @@ export default {
     methods: {
         setActive (menu, idx) {
             this.$store.commit('setActive', menu);
+        },
+        singleSetActive(menu, idx) {
+            if(menu.subMenu === undefined) {
+                this.$store.commit('setActive', menu.title);
+            }
         }
     },
 }

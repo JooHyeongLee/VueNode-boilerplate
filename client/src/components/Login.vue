@@ -81,7 +81,6 @@ export default {
                 password: this.password,
             });
             try {
-                console.log(response)
                 if(response.data === 'success') {
                     this.$router.push('/');
                 } else {
