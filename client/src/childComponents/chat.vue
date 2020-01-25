@@ -69,35 +69,20 @@
                                         <th>Title</th>
                                         <th>Completed </th>
                                         <th>Task</th>
-                                        <th>Date</th>
-                                        <th>Action</th>
+                                        <th>생성일자</th>
+                                        <th>인원수</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
+                                    <tr v-for="(item, idx) in list.data" :key="list.data.id">
                                         <td><div class="icheckbox_square-green checked" style="position: relative;"><input type="checkbox" checked="" class="i-checks" name="input[]" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"></ins></div></td>
-                                        <td>Project<small>This is example of project</small></td>
-                                        <td><span class="pie" style="display: none;">0.52/1.561</span><svg class="peity" height="16" width="16"><path d="M 8 8 L 8 0 A 8 8 0 0 1 14.933563796318165 11.990700825968545 Z" fill="#1ab394"></path><path d="M 8 8 L 14.933563796318165 11.990700825968545 A 8 8 0 1 1 7.999999999999998 0 Z" fill="#d7d7d7"></path></svg></td>
-                                        <td>20%</td>
-                                        <td>Jul 14, 2013</td>
-                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
+                                        <td>{{item.title}}</td>
+                                        <td>{{item.count}}</td>
+                                        <td>{{item.count}}</td>
+                                        <td>{{item.date}}</td>
+                                        <td>{{item.count}}</td>
                                     </tr>
-                                    <tr>
-                                        <td><div class="icheckbox_square-green" style="position: relative;"><input type="checkbox" class="i-checks" name="input[]" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"></ins></div></td>
-                                        <td>Alpha project</td>
-                                        <td><span class="pie" style="display: none;">6,9</span><svg class="peity" height="16" width="16"><path d="M 8 8 L 8 0 A 8 8 0 0 1 12.702282018339787 14.47213595499958 Z" fill="#1ab394"></path><path d="M 8 8 L 12.702282018339787 14.47213595499958 A 8 8 0 1 1 7.999999999999998 0 Z" fill="#d7d7d7"></path></svg></td>
-                                        <td>40%</td>
-                                        <td>Jul 16, 2013</td>
-                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><div class="icheckbox_square-green" style="position: relative;"><input type="checkbox" class="i-checks" name="input[]" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"></ins></div></td>
-                                        <td>Betha project</td>
-                                        <td><span class="pie" style="display: none;">3,1</span><svg class="peity" height="16" width="16"><path d="M 8 8 L 8 0 A 8 8 0 1 1 0 8.000000000000002 Z" fill="#1ab394"></path><path d="M 8 8 L 0 8.000000000000002 A 8 8 0 0 1 7.999999999999998 0 Z" fill="#d7d7d7"></path></svg></td>
-                                        <td>75%</td>
-                                        <td>Jul 18, 2013</td>
-                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                                    </tr>
+
                                     <tr>
                                         <td><div class="icheckbox_square-green" style="position: relative;"><input type="checkbox" class="i-checks" name="input[]" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"></ins></div></td>
                                         <td>Gamma project</td>
@@ -120,5 +105,22 @@
 </template>
 
 <script>
+import ChatService from '../services/ChattingService.js';
+export default {
+    name: 'chat',
+    data () {
+        return {
+            list: []
+        }
+    },
+    mounted () {
+        this.init();
+    },
+    methods: {
+        async init() {
+            this.list = await ChatService.selectList();
+        }
+    }
 
+}
 </script>
