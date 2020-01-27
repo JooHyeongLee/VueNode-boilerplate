@@ -13,6 +13,7 @@
     <link href="/static/css/plugins/codemirror/codemirror.css" rel="stylesheet">
     <link href="/static/css/plugins/codemirror/ambiance.css" rel="stylesheet">
     <link href="/static/css/style.css" rel="stylesheet">
+    <link href="/static/css/plugins/summernote/summernote-bs4.css" rel="stylesheet">
 
 
 	<!-- inspinia 템플릿 적용 -->
@@ -24,11 +25,16 @@
 	<!-- Custom and plugin javascript -->
 	<script src="/static/js/inspinia.js"></script>
 	<script src="/static/js/plugins/pace/pace.min.js"></script>
+    <script src="/static/js/plugins/summernote/summernote-bs4.js"></script>
 	<!-- Peity -->
 	<script src="/static/js/plugins/peity/jquery.peity.min.js"></script>
 	<!-- Peity -->
 	<script src="/static/js/demo/peity-demo.js"></script>
-
+    <script>
+    $(document).ready(function(){
+        $('.summernote').summernote();
+    });
+    </script>
   </head>
   <body>
     <div id="app"></div>

@@ -10,7 +10,7 @@
 		</div>
 	</div>
 </template>
-
+ 
 <script>
 // 공통 컴포넌트
 import navigation from '../common/navigation.vue';
@@ -20,6 +20,7 @@ import footer from '../common/footer.vue';
 import mailBox from '../childComponents/mailbox.vue';
 import dashboard from '../childComponents/content.vue';
 import chat from '../childComponents/chat.vue';
+import chatRoom from '../childComponents/chatRoom.vue';
 // service
 import LoginService from '../services/LoginService.js';
 export default {
@@ -51,7 +52,8 @@ export default {
         'footer-bar': footer,
         'Inbox': mailBox,
         'dashboard': dashboard,
-        'chat': chat
+        'chat': chat,
+        'chat-room': chatRoom
     }
 }
 

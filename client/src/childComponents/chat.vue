@@ -74,7 +74,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr v-for="(item, idx) in list.data" :key="list.data.id">
+                                    <tr v-for="(item, idx) in list.data" :key="list.data.id" @click="room(item)">
                                         <td><div class="icheckbox_square-green checked" style="position: relative;"><input type="checkbox" checked="" class="i-checks" name="input[]" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"></ins></div></td>
                                         <td>{{item.title}}</td>
                                         <td>{{item.count}}</td>
@@ -119,6 +119,10 @@ export default {
     methods: {
         async init() {
             this.list = await ChatService.selectList();
+        },
+        async room(item) {
+            this.$store.commit('setActive', 'chat-room');
+            this.$store.commit('setRoomInfo', item);
         }
     }
 
