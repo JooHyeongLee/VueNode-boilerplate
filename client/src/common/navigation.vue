@@ -22,8 +22,8 @@
                     </div>
                 </li>
                 <!-- menu 반복문으로 작성 -->
-                <li v-for="(menu, idx) in menus" :key="menu.title">
-                    <a href="#"><i v-bind:class="menu.icon"></i> <span class="nav-label" @click="singleSetActive(menu, idx)">{{ menu.title }}</span> <span :class="menu.arrow"></span></a>
+                <li v-for="(menu, idx) in menus" :key="menu.title" @click="singleSetActive(menu, idx)">
+                    <a href="#"><i v-bind:class="menu.icon"></i> <span class="nav-label">{{ menu.title }}</span> <span :class="menu.arrow"></span></a>
                     <ul v-bind:class="menu.ulClass">
                         <li v-for="(subMenu, subIdx) in menu.subMenu" :key="subMenu" @click="setActive(subMenu, subIdx)">
                             <a href="#">{{ subMenu }}</a>

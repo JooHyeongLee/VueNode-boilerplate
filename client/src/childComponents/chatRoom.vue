@@ -18,11 +18,19 @@
 import txtEdit from './txtEdit.vue';
 export default {
     name: 'chatRoom',
+    watch: {
+        txt: function(newVal) {
+            console.log(newVal);
+        }
+    },
     data () {
         return {
+            txt: ''
         }
     },
     mounted () {
+        $('.summernote').summernote();
+        this.txt = $('.note-editable card-block').text();
     },
     components: {
         'txt-edit': txtEdit
