@@ -42,13 +42,20 @@ export default {
     name: 'txtEdit',
     data () {
         return {
+            note: null,
         }
     },
     mounted () {
-        $('.summernote').summernote();
+        this.note = $('.summernote').summernote();
+        window.addEventListener('keydown', this.keyDown)
     },
     methods: {
-    },
+        keyDown: function () {
+          const activeElement = document.getElementsByClassName('note-editable card-block')[0]
+          if (activeElement && !isNaN(event.key) && event.key > 0) {
+            activeElement.innerHTML = event.key
+          }
+        }},
     components: {
     }
 }
