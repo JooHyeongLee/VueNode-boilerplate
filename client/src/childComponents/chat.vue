@@ -121,6 +121,7 @@ export default {
             this.list = await ChatService.selectList();
         },
         async room(item) {
+            ChatService.join(item._id);
             this.$store.commit('setActive', 'chat-room');
             this.$store.commit('setRoomInfo', item);
         }
