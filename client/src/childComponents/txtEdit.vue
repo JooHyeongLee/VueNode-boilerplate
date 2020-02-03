@@ -36,7 +36,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </template>
 
 <script>
@@ -44,24 +43,23 @@
 import ChattingService from '../services/ChattingService.js';
 export default {
     name: 'txtEdit',
-//  TODO: 트리거 가능한 데이터구조로 변경    
     watch: {
-        test : (val) => {
-            console.log('야호');
+        enter : function(val)  {
+            this.chat = '';
         }
     },
     data () {
         return {
             chat : '',
-            flag: [1,2,3]
+            enter: true,
         }
     },
     mounted () {
     },
     methods: {
         // 채팅 보내기
-        submit: async(chat) => {
-            console.log(this.flag);
+        async submit(chat) {
+            this.enter = !this.enter;
             ChattingService.submit(chat);
         },
     },
