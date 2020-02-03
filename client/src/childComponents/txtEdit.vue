@@ -44,11 +44,16 @@
 import ChattingService from '../services/ChattingService.js';
 export default {
     name: 'txtEdit',
+//  TODO: 트리거 가능한 데이터구조로 변경    
     watch: {
+        test : (val) => {
+            console.log('야호');
+        }
     },
     data () {
         return {
-            chat : ''
+            chat : '',
+            flag: [1,2,3]
         }
     },
     mounted () {
@@ -56,6 +61,7 @@ export default {
     methods: {
         // 채팅 보내기
         submit: async(chat) => {
+            console.log(this.flag);
             ChattingService.submit(chat);
         },
     },

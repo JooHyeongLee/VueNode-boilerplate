@@ -19,9 +19,6 @@ import txtEdit from './txtEdit.vue';
 export default {
     name: 'chatRoom',
     watch: {
-        txt: function(newVal) {
-            console.log(newVal);
-        }
     },
     data () {
         return {
