@@ -30,6 +30,9 @@
                                         <div class="input-group col-md-10"><input type="text" class="form-control" v-model="chat" v-on:keyup.enter="submit(chat)"> <span class="input-group-append"> <button type="button" v-on:click="submit(chat)" class="btn btn-primary">Go!
                                     </button> </span></div>
                                 </div>
+                                <div class="col-sm-12 row" style="margin-top:30px;">
+                                        <div class="input-group col-md-10"><input type="text" v-model = 'msg.data' class="form-control"> <span class="input-group-append"></span></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -52,6 +55,7 @@ export default {
         return {
             chat : '',
             enter: true,
+            msg: '',
         }
     },
     mounted () {
@@ -60,7 +64,7 @@ export default {
         // 채팅 보내기
         async submit(chat) {
             this.enter = !this.enter;
-            ChattingService.submit(chat);
+            this.msg = await ChattingService.submit(chat);
         },
     },
     components: {
