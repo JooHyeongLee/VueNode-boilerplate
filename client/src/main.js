@@ -11,7 +11,6 @@ Vue.use(VueSweetalert2);
 Vue.config.productionTip = false;
 Vue.use(vbclass, router);
 
-
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
