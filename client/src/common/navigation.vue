@@ -22,10 +22,10 @@
                     </div>
                 </li>
                 <!-- menu 반복문으로 작성 -->
-                <li v-for="(menu, idx) in menus" :key="menu.title" @click="singleSetActive(menu, idx)">
+                <li v-for="(menu, idx) in menus" :key="menu.title" @click="singleSetCurrentView(menu, idx)">
                     <a href="#"><i v-bind:class="menu.icon"></i> <span class="nav-label">{{ menu.title }}</span> <span :class="menu.arrow"></span></a>
                     <ul v-bind:class="menu.ulClass">
-                        <li v-for="(subMenu, subIdx) in menu.subMenu" :key="subMenu" @click="setActive(subMenu, subIdx)">
+                        <li v-for="(subMenu, subIdx) in menu.subMenu" :key="subMenu" @click="setCurrentView(subMenu, subIdx)">
                             <a href="#">{{ subMenu }}</a>
                         </li> 
                     </ul>
@@ -247,12 +247,12 @@ export default {
     mounted () {
     },
     methods: {
-        setActive (menu, idx) {
-            this.$store.commit('setActive', menu);
+        setCurrentView(menu, idx) {
+            this.$store.commit('setCurrentView', menu);
         },
-        singleSetActive(menu, idx) {
+        singleSetCurrentView(menu, idx) {
             if(menu.subMenu === undefined) {
-                this.$store.commit('setActive', menu.title);
+                this.$store.commit('setCurrentView', menu.title);
             }
         }
     },

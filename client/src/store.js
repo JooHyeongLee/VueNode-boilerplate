@@ -5,12 +5,12 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-        active: '',
+        currentView: 'dashboard',
         roomInfo: {},
     },
     mutations: {
-        setActive (state, active) {
-            state.active = active;
+        setCurrentView (state, currentView) {
+            state.currentView = currentView;
         },
         setRoomInfo (state, roomInfo) {
             state.roomInfo = roomInfo;

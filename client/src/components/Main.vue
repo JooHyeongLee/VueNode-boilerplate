@@ -3,8 +3,10 @@
 		<navigation v-if="this.profile" v-bind:profile-url="this.profile"></navigation>
 		<div id="page-wrapper" class="gray-bg">
 			<header-bar></header-bar>	
-            <!-- sub Component 위치 -->
-            <component v-bind:is="$store.state.active"></component>
+            <keep-alive>
+                <!-- sub Component 위치 -->
+                <component v-bind:is="$store.state.currentView"></component>
+            </keep-alive>
             <!-- -->
 			<footer-bar></footer-bar>
 		</div>
@@ -18,7 +20,7 @@ import header from '../common/header.vue';
 import footer from '../common/footer.vue';
 // 서브 컴포넌트
 import mailBox from '../childComponents/mailbox.vue';
-import dashboard from '../childComponents/content.vue';
+import dashboard from '../childComponents/dashboard.vue';
 import chat from '../childComponents/chat.vue';
 import chatRoom from '../childComponents/chatRoom.vue';
 // service
@@ -53,7 +55,8 @@ export default {
         'Inbox': mailBox,
         'dashboard': dashboard,
         'chat': chat,
-        'chat-room': chatRoom
+        'chat-room': chatRoom,
+        'dashboard': dashboard
     }
 }
 
