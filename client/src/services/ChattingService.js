@@ -7,9 +7,10 @@ export default {
     selectList () {
         return Api().get('/api/chat/selectList');
     },
-    submit (params) {
+    submit (msg, topic) {
         let result = new URLSearchParams();
-        result.append('chat', params);
+        result.append('chat', msg);
+        result.append('topic', topic);
         return Api().post('/api/chat/submit', result);
     },
     join (params) {

@@ -122,7 +122,7 @@ export default {
         },
         async room(item) {
             ChatService.join(item._id);
-            this.$store.commit('setActive', 'chat-room');
+            this.$store.commit('setCurrentView', 'chat-room');
             this.$store.commit('setRoomInfo', item);
         }
     }

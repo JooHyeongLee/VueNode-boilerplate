@@ -16,7 +16,6 @@
 </template>
 <script>
 import txtEdit from './txtEdit.vue';
-import mqtt from 'mqtt';
 export default {
     name: 'chatRoom',
     watch: {
@@ -27,19 +26,6 @@ export default {
         }
     },
     mounted () {
-        const client = mqtt.connect('mqtt://localhost:1883');
-        client.on('message', function (topic, message) {
-            // message is Buffer
-            console.log(message.toString())
-            client.end()
-        })
-        client.on('connect', () => {
-            client.subscribe('listener', function (err) {
-                if (!err) {
-                    client.publish('listener', 'Hello mqtt')
-                }
-            })
-        })
         $('.summernote').summernote();
         this.txt = $('.note-editable card-block').text();
     },

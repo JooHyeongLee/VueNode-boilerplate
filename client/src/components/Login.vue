@@ -80,8 +80,9 @@ export default {
                 email: this.email,
                 password: this.password,
             });
+            console.log(response);
             try {
-                if(response.data === 'success') {
+                if(response.data.info) {
                     this.$router.push('/');
                 } else {
                     alert('로그인 실패');

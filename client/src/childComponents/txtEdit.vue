@@ -31,7 +31,7 @@
                                     </button> </span></div>
                                 </div>
                                 <div class="col-sm-12 row" style="margin-top:30px;">
-                                        <div class="input-group col-md-10"><input type="text" v-model = 'msg.data' class="form-control"> <span class="input-group-append"></span></div>
+                                        <div class="input-group col-md-10"><input type="text" v-model = 'msg' class="form-control"> <span class="input-group-append"></span></div>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +64,10 @@ export default {
         // 채팅 보내기
         async submit(chat) {
             this.enter = !this.enter;
-            this.msg = await ChattingService.submit(chat);
+            let res = await ChattingService.submit(chat, this.$store.state.roomInfo._id);
+            if(res) {
+                this.msg = res.data;
+            }
         },
     },
     components: {

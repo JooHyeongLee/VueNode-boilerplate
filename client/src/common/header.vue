@@ -129,8 +129,6 @@ export default {
     mounted () {
     },
     methods: {
-        async login () {
-        },
     },
 }
 </script>
