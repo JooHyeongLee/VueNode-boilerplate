@@ -235,11 +235,9 @@ export default {
                     arrow: 'fa arrow'
                 },
                 {
-                    title: 'graphs',
+                    title: 'maps',
                     ulClass: 'nav nav-second-level collapse',
-                    icon: 'fa fa-bar-chart-o',
-                    subMenu: ['Flot Charts', 'Morris.js Charts', 'Richshaw Charts', 'Chart.js', 'Chartist', 'c3 charts', 'Peity Charts', 'Sparkline Charts'],
-                    arrow: 'fa arrow'
+                    icon: 'fa fa-map-marker',
                 }
             ]
         }

@@ -23,6 +23,7 @@ import mailBox from '../childComponents/mailbox.vue';
 import dashboard from '../childComponents/dashboard.vue';
 import chat from '../childComponents/chat.vue';
 import chatRoom from '../childComponents/chatRoom.vue';
+import maps from '../childComponents/maps.vue';
 // service
 import LoginService from '../services/LoginService.js';
 export default {
@@ -56,7 +57,8 @@ export default {
         'dashboard': dashboard,
         'chat': chat,
         'chat-room': chatRoom,
-        'dashboard': dashboard
+        'dashboard': dashboard,
+        'maps': maps,
     }
 }
 
