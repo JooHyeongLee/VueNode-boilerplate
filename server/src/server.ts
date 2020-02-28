@@ -7,9 +7,6 @@ import errorHandlers from "./middleware/errorHandlers";
 import routes from "./services";
 import { logger } from "./utils/logger";
 
-// type orm 
-import * as dbConnection from './utils/dbConnection';
-dbConnection.conn();
 
 // mongo DB 
 import {MongoConn} from './utils/mongodbConnModule';
