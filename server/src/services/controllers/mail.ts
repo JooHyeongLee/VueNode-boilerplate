@@ -74,6 +74,7 @@ class Mail {
     async getMail() {
         let subject;
         let contents;
+        let obj;
         await imap.once('ready', () => {
             this.openInBox((err: Error, box: any)=> {
                 if(err) throw err;
@@ -92,15 +93,14 @@ class Mail {
                         stream.once('end', async ()=>{
                             // TODO: JSON.parse를 하기 위해선 key value가 double quote로 변경되어야 함.
                             subject = await inspect(Imap.parseHeader(buffer));
-                            subject = await subject.replace(/\\n/g, "\\n")  
-                            .replace(/\\'/g, "\\'")
-                            .replace(/\\"/g, '\\"')
-                            .replace(/\\&/g, "\\&")
-                            .replace(/\\r/g, "\\r")
-                            .replace(/\\t/g, "\\t")
-                            .replace(/\\b/g, "\\b")
-                            .replace(/\\f/g, "\\f");
-                            console.log(subject);
+                            obj = subject.replace(/date:/, '"date":')
+                            .replace(/from:/, '"from":')
+                            .replace(/to:/, '"to":')
+                            .replace(/subject:/, '"subject":')
+                            .replace(/\[ '/g, '"')
+                            .replace(/\' ]/g, '"')
+                            obj = JSON.parse(obj);
+                            
                             // console.log(prefix + 'Parsed header: %s', inspect(Imap.parseHeader(buffer)));
                         });
                     });

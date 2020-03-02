@@ -17,7 +17,8 @@ const mail = {
                 logger.info(`[route]: /mail`);
                 try {
                     let result = true;
-                    await mailService.getMail();
+                    let mail = await mailService.getMail();
+                    console.log(mail);
                     if(result) {
                         session!.isLogin = true;
                         res.status(200).send("success");
