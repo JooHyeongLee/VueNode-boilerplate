@@ -2,7 +2,7 @@ import * as db from "typeorm";
 import * as fs from 'fs';
 import * as path from 'path';
 import {ormconfig} from '../config/ormconfig';
-import {logger} from '../utils/logger';
+import {logger} from '../services/lib/logger';
 
 
 let env: string = process.env.NODE_ENV!;

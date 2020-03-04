@@ -5,7 +5,7 @@ import { applyMiddleware, applyRoutes } from "./utils";
 import middleware from "./middleware";
 import errorHandlers from "./middleware/errorHandlers";
 import routes from "./services";
-import { logger } from "./utils/logger";
+import { logger } from "./services/lib/logger";
 
 
 // mongo DB 

@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { logger } from '../utils/logger';
+import { logger } from './lib/logger';
 
 async function routeList() {
   const files = await new Promise((resolve, reject)=> fs.readdir(path.join(__dirname, '/routes/'), (err: NodeJS.ErrnoException | null, files: string[])=>{

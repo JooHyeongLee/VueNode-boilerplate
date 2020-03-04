@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import { logger } from "../../utils/logger";
+import { logger } from "../lib/logger";
 import { Member } from "../models/member";
 
 const login = {

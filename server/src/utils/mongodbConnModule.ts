@@ -1,5 +1,5 @@
 import mongoose = require("mongoose");
-import { logger } from './logger';
+import { logger } from '../services/lib/logger';
 
 export class MongoConn {
   private db: mongoose.Connection;

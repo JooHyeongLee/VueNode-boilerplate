@@ -3,7 +3,7 @@ import * as nodemailer from 'nodemailer';
 import { MailParser } from "mailparser";
 import Imap from "imap";
 import { inspect } from "util";
-import { logger } from "../../utils/logger";
+import { logger } from "../lib/logger";
 
 let imap = new Imap({
     user: auth.GMAIL.ID,
@@ -71,7 +71,6 @@ class Mail {
                             .replace(/, (\r\n|\n|\r)/gm,'",')
                             .replace(/.$/,'"')
                             .replace(/.$/,'"')
-                            console.log(this.obj);
                             // this.obj = await JSON.parse(this.obj);
                             // console.log(prefix + 'Parsed header: %s', inspect(Imap.parseHeader(buffer)));
                         });

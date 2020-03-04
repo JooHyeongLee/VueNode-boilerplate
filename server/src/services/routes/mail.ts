@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import { logger } from "../../utils/logger";
+import { logger } from "../lib/logger";
 import { auth } from "../../config/auth";
 import * as nodemailer from 'nodemailer';
 import { MailParser } from "mailparser";
@@ -17,7 +17,6 @@ const mail = {
                 logger.info(`[route]: /mail`);
                 try {
                     let result = true;
-                    console.log(mailService.obj);
                     if(result) {
                         session!.isLogin = true;
                         res.status(200).send("success");

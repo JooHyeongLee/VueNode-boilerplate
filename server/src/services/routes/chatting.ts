@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import { logger } from "../../utils/logger";
+import { logger } from "../lib/logger";
 import { Chatting } from '../models/chatting';
 import mqtt from 'mqtt';
 import { chattingController } from "../controllers/chatting";
@@ -28,6 +28,18 @@ const chatting = {
                 logger.info('[route] /api/chat/create');
                 // 채팅방 생성
                 let create = await chattingController.create(req);
+                res.status(200).send(create);
+            }
+        ]
+    },
+    join: {
+        path: "/api/chat/join",
+        method: "post",
+        handler: [
+            async (req: Request, res: Response) => {
+                logger.info('[route] /api/chat/join');
+                // 채팅방 참여
+                let create = await chattingController.join(req);
                 res.status(200).send(create);
             }
         ]
