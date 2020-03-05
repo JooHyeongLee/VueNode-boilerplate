@@ -19,12 +19,12 @@ class Config {
     async init() {
         // 상용일 때
         if(process.env.NODE_ENV === 'production') {
-            this.orm = ormConfig.development;
+            this.orm = ormConfig.production;
             this.common = production;
         } 
         // 개발일 때
         else {
-            this.orm = ormConfig.production;
+            this.orm = ormConfig.development;
             this.common = development;
         }
     }

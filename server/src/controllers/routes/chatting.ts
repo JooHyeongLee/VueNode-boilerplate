@@ -19,6 +19,7 @@ class Chatting extends BaseController {
                 let list = await chattingModel.model.find({
                     useYN: "Y"
                 });
+                
                 res.status(200).send(list);
             }
         ]
