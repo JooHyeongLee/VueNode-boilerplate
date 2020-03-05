@@ -41,5 +41,5 @@ var ChattingSchema = new Schema({
   useYN: { type: String }
 }, {collection: 'chatting'});
 
-var Chatting = mongoose.model("Chatting", ChattingSchema); 
-export {Chatting}
+var chatting = mongoose.model("Chatting", ChattingSchema); 
+export {chatting}

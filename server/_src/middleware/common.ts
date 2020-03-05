@@ -27,7 +27,3 @@ export const multipart = (router: express.Router) => {
   multer({dest: "tmp"});
   router.use(upload.none());
 }
-
-export const mqtt = (router: express.Router) => {
-    // router.use(express.static(path.dirname(require.resolve("mosca"))+"/public"))
-}

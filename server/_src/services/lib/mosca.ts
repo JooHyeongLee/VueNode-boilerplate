@@ -7,7 +7,7 @@
 
 import _mosca from 'mosca';
 import { logger } from './logger';
-import { chattingController } from '../controllers/chatting';
+import { chattingService } from '../controllers/chatting';
 import { config } from './config';
 
 class Mosca {
