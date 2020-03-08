@@ -15,23 +15,7 @@ class Login {
                     email: req.body.email,
                     password: req.body.password
                 });
-                if(info) {
-                    if(req.session!.info) {
-                        req.session?.save(err=>{
-                            if(err) logger.error(`session save error`);
-                        })
-                    } else {
-                        req.session!.info = {
-                            email: info.toObject().email,
-                            profile: info.toObject().profile_url
-                        };
-                        logger.info('session save');
-                    }
-                    res.status(200).send(req.session);
-                }
-                else {
-                    res.status(404).send("fail");
-                }
+                
             }
         ]
     }

@@ -17,7 +17,6 @@ import { config } from './lib/config';
 // TODO: ormconfig 파일의 값으로 mongo, mosca 구동 필요
 import { mosca } from './lib/mosca';
 import { mongo } from './lib/mongo';
-mongo.init();
 import { sess } from './middleware/session';
 
 export class Server {
@@ -61,6 +60,7 @@ export class Server {
 
     // MQTT server(mosca) 시작
     mosca.init()
+    mongo.init();
 
     server.listen(port, () => {
       logger.info(`---------------------------------------------------`);
