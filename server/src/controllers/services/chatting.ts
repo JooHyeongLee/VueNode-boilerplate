@@ -3,7 +3,7 @@ import { chattingModel } from "../models/chatting";
 import { Request, Response, response } from "express";
 import { mqtt, Mqtt } from "../../lib/mqtt";
 import { BaseController } from "../commonType/base";
-import { mosca } from "../../lib/mosca";
+import { mosca, Mosca } from "../../lib/mosca";
 import { db } from "../../lib/db";
 
 class Chatting extends BaseController {
@@ -32,10 +32,19 @@ class Chatting extends BaseController {
     // 메세지 발행
     submit = async(req: Request, res: Response) => {
         // Base64 decode sample code
-        let data = Buffer.from('MTIzNA==', 'base64').toString('ascii');
+        // let msg = Buffer.from(new Mosca().message, 'base64').toString('ascii');
         // mqtt client publish
-        await mqtt.publish(req.body.topic, req.body.chat);
-        res.send(req.body.chat);
+        console.log(req.body)
+        // await mqtt.publish(req.body.topic, req.body.chat);
+        let test = await chattingModel.model.find({
+            title: req.body.topic
+        });
+        console.log(test);
+        return req.body.chat
+    }
+
+    // 메세지 수신
+    listen = async(req: Request, res: Response) => {
     }
 }
 

@@ -9,8 +9,9 @@ import _mosca from 'mosca';
 import { logger } from './logger';
 import { chattingService } from '../controllers/services/chatting';
 import { config } from './config';
+import { Response, response } from 'express';
 
-class Mosca {
+export class Mosca {
     broker: any
 
     constructor(){
@@ -48,7 +49,6 @@ class Mosca {
         this.broker.on('ready', ()=>{
           logger.info('Mosca broker is up and running');
         });
-
     }
 }
 

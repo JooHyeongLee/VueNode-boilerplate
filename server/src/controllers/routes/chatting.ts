@@ -57,8 +57,8 @@ class Chatting extends BaseController {
         handler: [
             async (req: Request, res: Response) => {
                 logger.info('[route] /api/chat/submit');
-                await mqtt.publish(req.body.topic, req.body.chat);
-                res.status(200).send(req.body.chat);
+                let msg = await chattingService.submit(req, res);
+                res.status(200).send(msg);
             }
         ]
     }
