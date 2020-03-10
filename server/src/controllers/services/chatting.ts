@@ -34,12 +34,10 @@ class Chatting extends BaseController {
         // Base64 decode sample code
         // let msg = Buffer.from(new Mosca().message, 'base64').toString('ascii');
         // mqtt client publish
-        console.log(req.body)
         // await mqtt.publish(req.body.topic, req.body.chat);
         let test = await chattingModel.model.find({
             title: req.body.topic
         });
-        console.log(test);
         return req.body.chat
     }
 

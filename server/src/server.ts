@@ -18,6 +18,7 @@ import { config } from './lib/config';
 import { mosca } from './lib/mosca';
 import { mongo } from './lib/mongo';
 import { sess } from './middleware/session';
+import { Corona } from './controllers/models/corona';
 
 export class Server {
 
