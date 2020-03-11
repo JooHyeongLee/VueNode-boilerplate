@@ -47,6 +47,7 @@
     "compression": "^1.7.3",
     "connect-mongo": "^3.2.0",
     "cors": "^2.8.5",
+    "csv-parser": "^2.3.2",
     "delay": "^4.3.0",
     "dotenv": "^6.2.0",
     "express": "^5.0.0-alpha.7",
