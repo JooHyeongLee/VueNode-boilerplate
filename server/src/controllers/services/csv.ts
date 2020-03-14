@@ -3,13 +3,26 @@ import fs from 'fs';
 import path from 'path'
 
 class Csv {
-    results: any = [];
-    async readCsv() {
-        fs.createReadStream(path.join(__dirname + '/../../../data/20200311.csv'))
+    csvData: any = [];
+    result: any = [];
+
+    constructor() {
+        this.readCsv();
+    }
+
+    async readCsv(): Promise<any>{
+        fs.createReadStream(path.join(__dirname + '/../../../data/20200314.csv'))
         .pipe(csv())
-        .on('data', (data)=> this.results.push(data))
+        .on('data', (data)=> this.csvData.push(data))
         .on('end', ()=>{
-            console.log(this.results);
+            this.csvData.map((v: any)=>{
+                this.result.push({
+                    country: v.country,
+                    content1: v.content1,
+                    content2: v.content2,
+                    content3: v.content3
+                })
+            })
         })
     }
 }

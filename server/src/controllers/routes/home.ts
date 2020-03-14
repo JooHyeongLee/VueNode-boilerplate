@@ -13,13 +13,8 @@ class Home {
         handler: [
             async ( req: Request, res: Response) => {
                 logger.info(`[route] / `);
-                /* new Corona().model.create({
-                    seq: 1,
-                    country: 'sample',
-                    action: 'sample action'
-                }) */
                 await csvService.readCsv();
-                res.status(200).send(1);
+                res.status(200).send(csvService.result);
             }
         ]
     }
