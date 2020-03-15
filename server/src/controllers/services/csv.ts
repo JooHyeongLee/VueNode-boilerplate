@@ -6,11 +6,7 @@ class Csv {
     csvData: any = [];
     result: any = [];
 
-    constructor() {
-        this.readCsv();
-    }
-
-    async readCsv(): Promise<any>{
+    async readCsv(): Promise<any> {
         fs.createReadStream(path.join(__dirname + '/../../../data/20200314.csv'))
         .pipe(csv())
         .on('data', (data)=> this.csvData.push(data))
@@ -25,6 +21,15 @@ class Csv {
             })
         })
     }
+
+    removeEmpty(item: any) {
+        this.result.map((obj: any)=>{
+            Object.keys(obj).forEach(key=>{
+                // (obj[key] && typeof obj[key] === 'object') && new Csv().removeEmpty(obj[key]) ||
+                (obj[key] === '' || obj[key] === null) && delete obj[key]
+            })
+        })
+    };
 }
 
 export const csvService = new Csv();
