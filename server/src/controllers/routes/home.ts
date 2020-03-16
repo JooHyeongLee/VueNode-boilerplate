@@ -10,10 +10,10 @@ class Home {
         handler: [
             async ( req: Request, res: Response) => {
                 logger.info(`[route] / `);
-                await csvService.readCsv();
-                console.log(csvService.result);
-                // await csvService.removeEmpty(csvService.result);
-                res.status(200).send(csvService.result);
+                await csvService.readCsv((csvData: any)=>{
+                    res.status(200).send(csvData);
+                })
+                // await csvService.removeEmpty(csvService);
             }
         ]
     }
