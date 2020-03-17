@@ -15,94 +15,16 @@
                     <tr>
                         <th>#</th>
                         <th>국가명</th>
-                        <th>금지날짜</th>
-                        <th>해당국가 코로나 상태</th>
+                        <th>내용1</th>
+                        <th>내용2</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>가봉</td>
-                        <td>0309</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>그레나다</td>
-                        <td>0307</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>나우루</td>
-                        <td>0303</td>
-                        <td>@twitter</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>나이지리아</td>
-                        <td>0227</td>
-                        <td>@twitter</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>네팔</td>
-                        <td>0310</td>
-                        <td>@twitter</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>노르웨이</td>
-                        <td>0307</td>
-                        <td>@twitter</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>뉴질랜드</td>
-                        <td>0309</td>
-                        <td>@twitter</td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>대만</td>
-                        <td>0225</td>
-                        <td>@twitter</td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td>덴마크</td>
-                        <td>0302</td>
-                        <td>@twitter</td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td>라오스</td>
-                        <td>0227</td>
-                        <td>@twitter</td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td>라이베리아</td>
-                        <td>0302</td>
-                        <td>@twitter</td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>러시아</td>
-                        <td>0303</td>
-                        <td>@twitter</td>
-                    </tr>
-                    <tr>
-                        <td>13</td>
-                        <td>레바논</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                    <tr>
-                        <td>13</td>
-                        <td>루마니아</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
+                    <tr v-for="(item, index) in corona" :key="corona.index">
+                        <td>{{item.index}}</td>
+                        <td>{{item.country}}</td>
+                        <td>{{ item.content1.length < 3 ? item.content2 : item.content1 }}</td>
+                        <td>{{item.content1.length < 3 ? item.content3 : ''}}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -120,10 +42,12 @@ export default {
     name: 'maps',
     data () {
         return {
-            map: ''
+            corona: []
         }
     },
-    mounted: function() {
+    mounted: async function() {
+        const response = await MapService.init();
+        this.corona = response.data;
     },
     methods: {
     }

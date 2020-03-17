@@ -40,7 +40,6 @@ export default {
     methods: {
         async init () {
             const response = await LoginService.getInit();
-            console.log(response);
             try {
                 if(response.data.result && response.data.info.profile_url) {
                     this.profile = response.data.info.profile_url;
