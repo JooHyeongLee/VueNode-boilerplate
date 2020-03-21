@@ -1,8 +1,5 @@
-import { Router, Request, Response } from "express";
-import request from 'request';
+import { Request, Response } from "express";
 import { logger } from "../../lib/logger";
-import { config } from "../../lib/config";
-import { Corona } from "../models/corona";
 import { csvService } from "../services/csv";
 
 class Map {

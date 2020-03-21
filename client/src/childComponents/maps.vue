@@ -72,8 +72,13 @@ export default {
         search() {
             this.corona.map((obj, idx)=>{
                 if(obj.country === this.word) {
-                    this.corona.splice(idx, 1);
-                    this.corona.unshift(obj);
+                    if(obj.content1.length < 5) {
+                        this.corona.splice(idx, 1);
+                        this.corona.unshift(obj);
+                    } else {
+                        this.corona.splice(idx, 1);
+                        this.corona.unshift(obj);
+                    }
                     return;
                 }
             })
